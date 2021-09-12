@@ -1,0 +1,32 @@
+{
+  "name": "blog-image-converter",
+  "version": "1.0.0",
+  "description": "The Node.js script to convert and resize image for blog.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js -i inputs -o outputs -t 1000 -m 800",
+    "exe": "node index.js -i inputs -o outputs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenpaMk2/blog-image-converter-js.git"
+  },
+  "keywords": [
+    "node",
+    "image-min",
+    "image-min-webp"
+  ],
+  "author": "tenpaMk2",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tenpaMk2/blog-image-converter-js/issues"
+  },
+  "homepage": "https://github.com/tenpaMk2/blog-image-converter-js#readme",
+  "dependencies": {
+    "commander": "^8.2.0",
+    "image-size": "^1.0.0",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^6.0.0"
+  }
+}
