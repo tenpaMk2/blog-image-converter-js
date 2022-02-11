@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/tenpaMk2/blog-image-converter-js#readme",
   "dependencies": {
-    "commander": "^8.2.0",
+    "commander": "^9.0.0",
     "image-size": "^1.0.0",
     "imagemin": "^8.0.1",
-    "imagemin-webp": "^6.0.0"
+    "imagemin-webp": "^7.0.0"
   }
 }
