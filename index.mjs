@@ -29,38 +29,38 @@ const isLandscapeImage = (imagePath) => {
   return dimensions.width > dimensions.height;
 };
 
-const main = async () => {
-  const imagePaths = getImagePaths(options.input);
-  let promises = [];
+const imagePaths = getImagePaths(options.input);
+let promises = [];
 
-  const landscapePaths = imagePaths.filter((path) => isLandscapeImage(path));
-  const landscapeConfig = Object.assign({}, imageminWebpConfig, {
+const landscapePaths = imagePaths.filter((path) => isLandscapeImage(path));
+const landscapeConfig = {
+  ...imageminWebpConfig,
+  ...{
     resize: { width: options.maxLength, height: 0 },
-  });
-  promises.push(
-    imagemin(landscapePaths, {
-      destination: options.output,
-      plugins: [imageminWebp(landscapeConfig)],
-    })
-  );
-
-  const portlaitPaths = imagePaths.filter((path) => !isLandscapeImage(path));
-  const portlaitConfig = Object.assign({}, imageminWebpConfig, {
-    resize: { width: 0, height: options.maxLength },
-  });
-  promises.push(
-    imagemin(portlaitPaths, {
-      destination: options.output,
-      plugins: [imageminWebp(portlaitConfig)],
-    })
-  );
-
-  Promise.all(promises).then((val) => {
-    const results = [...val[0], ...val[1]];
-    results.forEach((result) =>
-      console.log(`done!!: ${result.destinationPath}`)
-    );
-  });
+  },
 };
+promises.push(
+  imagemin(landscapePaths, {
+    destination: options.output,
+    plugins: [imageminWebp(landscapeConfig)],
+  })
+);
 
-await main();
+const portlaitPaths = imagePaths.filter((path) => !isLandscapeImage(path));
+const portlaitConfig = {
+  ...imageminWebpConfig,
+  ...{
+    resize: { width: 0, height: options.maxLength },
+  },
+};
+promises.push(
+  imagemin(portlaitPaths, {
+    destination: options.output,
+    plugins: [imageminWebp(portlaitConfig)],
+  })
+);
+
+Promise.all(promises).then((val) => {
+  const results = [...val[0], ...val[1]];
+  results.forEach((result) => console.log(`done!!: ${result.destinationPath}`));
+});
