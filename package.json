@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "The Node.js script to convert and resize image for blog.",
   "type": "module",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "test": "node index.js -i inputs -o outputs -t 1000 -m 800",
-    "exe": "node index.js -i inputs -o outputs"
+    "test": "node index.mjs -i inputs -o outputs -t 1000 -m 800",
+    "exe": "node index.mjs -i inputs -o outputs"
   },
   "repository": {
     "type": "git",
